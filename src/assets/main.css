@@ -1,0 +1,306 @@
+/* Global styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1a202c;
+  padding: 10px 20px;
+  color: #fff;
+  z-index: 20; /* Ensure it's above the canvas container */
+  position: relative; /* Position relative to ensure proper z-index stacking */
+}
+
+.navbar .logo img {
+  height: 40px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #f5f5f5;
+  z-index: 1; /* Ensure it’s below the navbar */
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  margin-bottom: 40px;
+}
+
+.upload-button {
+  background-color: #ff568a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.upload-button:hover {
+  background-color: #ff3484;
+}
+
+/* Samples Section */
+.samples {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.samples h2 {
+  margin-bottom: 20px;
+}
+
+.sample-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.sample-item img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sample-item p {
+  margin-top: 10px;
+  font-size: 1em;
+  color: #333;
+}
+
+/* Canvas Container */
+.canvas-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 60px; /* Adjust top to ensure it's below the navbar */
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 60px); /* Adjust height to account for the navbar */
+  background-color: #1a202c;
+  visibility: hidden; /* Hidden by default */
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+.canvas-container.visible {
+  visibility: visible; /* Visible when imgLoaded is true */
+}
+
+.canvas-container canvas {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Back Button */
+.goback {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #ff568a;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5; /* Ensure it is above other elements */
+}
+
+.goback svg {
+  fill: white;
+}
+
+/* Floating Menu */
+.floating-menu {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 5; /* Ensure it’s above other elements */
+}
+
+.floating-menu .info {
+  margin-bottom: 10px;
+}
+
+.floating-menu .progressbar {
+  margin-bottom: 10px;
+}
+
+.progressbar progress {
+  width: 100%;
+}
+
+.opt {
+  margin-bottom: 10px;
+}
+
+.description {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.sample-item {
+  border: currentColor;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #333;
+  color: #fff;
+  width: max-content;
+  padding: 10px 55px;
+}
+
+/* Buttons */
+.run-button,
+.save-button {
+  background-color: #ff568a;
+  color: white;
+  border: none;
+  padding: 5px 75px; /* Adjusted padding for appropriate size */
+  font-size: 0.9em;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.run-button svg,
+.save-button svg {
+  vertical-align: middle;
+}
+
+.run-button:hover,
+.save-button:hover {
+  background-color: #ff3484;
+}
+
+.save-button {
+  background-color: #28a745;
+}
+
+.save-button:hover {
+  background-color: #218838;
+}
+
+/* Drag Line and Ball */
+.dragLine {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 9px;
+  transform: translate(-100%, 0);
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:1;  
+}
+.dragLine:hover {
+  cursor: ew-resize;
+}
+.dragBall {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  background-color: rgba(0, 0, 0, 0.9);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:1;
+}
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem; /* Tailwind's py-6 */
+  background-color: #1a202c; /* Tailwind's bg-gray-900 */
+  color: #ffffff; /* Tailwind's text-white */
+}
+
+.footer-text {
+  font-size: 1.1rem; /* Tailwind's text-lg */
+  margin-bottom: 0.5rem; /* Tailwind's mb-4 */
+  text-align: center;
+}
+
+.social-links ul {
+  display: flex;
+  gap: 1.25rem; /* Tailwind's space-x-5 */
+  list-style: none;
+  padding: 0;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem; /* Tailwind's w-10 */
+  height: 2.5rem; /* Tailwind's h-10 */
+  color: #ffffff; /* Tailwind's text-white */
+  background-color: #2d3748; /* Tailwind's bg-gray-800 */
+  border-radius: 9999px; /* Tailwind's rounded-full */
+  transition: background-color 0.2s ease-in-out;
+}
+
+.social-links a:hover {
+  background-color: #4a5568; /* Tailwind's hover:bg-gray-700 */
+}
+
+svg {
+  width: 1.5rem; /* Tailwind's w-6 */
+  height: 1.5rem; /* Tailwind's h-6 */
+}
